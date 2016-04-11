@@ -21,12 +21,12 @@ PluginBase::PluginBase(){}
 
 PluginBase::~PluginBase(){}
 
-const int 
+int
 PluginBase::pluginSignature(){
   return 0xdeadbeef;
 }
 
-const int 
-PluginBase::getPluginSignature(){
+int
+PluginBase::getPluginSignature() const {
   return pluginSignature();
 }

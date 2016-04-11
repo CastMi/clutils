@@ -46,14 +46,14 @@ public:
      loader to ensure that when we've loaded a plugin, we really can tell
      that it IS a plugin.
   */
-  static const int pluginSignature();
+  static int pluginSignature();
 
   /**
      @return Same as the static call pluginSignature, but non-static.
      
      @see PluginBase#pluginSignature
   */
-  const int getPluginSignature();
+  int getPluginSignature() const;
 
 protected:
   PluginBase();
