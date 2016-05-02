@@ -2,6 +2,9 @@ include $(top_srcdir)/Makefile.am.common
 
 lib_LTLIBRARIES = libclutils.la
 
+libclutils_la_CPPFLAGS = \
+	-I$(srcdir)/pccts
+
 EXTRA_DIST = \
 	ConfigurationParser.gg \
 	config.h.in
@@ -97,7 +100,7 @@ libclutils_la_SOURCES = \
 	clutils/PluginBase.cpp \
 	clutils/PluginManager.cpp
 
-DO_ANTLR= antlr -k 1 -CC ConfigurationParser.gg
+DO_ANTLR= antlr -k 1 -CC $(srcdir)/ConfigurationParser.gg
 
 DO_DLG= dlg -C2 -CC parser.dlg -cl ConfigurationLexer
 

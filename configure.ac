@@ -1,15 +1,17 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT([clutils],[0.0])
 AC_CONFIG_MACRO_DIR([m4])
-AM_SILENT_RULES([yes])
-AM_INIT_AUTOMAKE([1.14 foreign subdir-objects])
+AM_INIT_AUTOMAKE([foreign subdir-objects -Wall])
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+AC_PREREQ(2.57)
+AC_CONFIG_MACRO_DIR([m4])
+LT_INIT
 
 dnl AC_CONFIG_SUBDIRS(src)
 
 dnl
 AC_CANONICAL_HOST
-
-AC_LANG(C++)
+AC_LANG([C++])
 
 dnl Checks for programs.
 AC_PROG_LIBTOOL
@@ -35,6 +37,11 @@ AC_STRUCT_TM
 AC_CHECK_SIZEOF(long int)
 AC_CHECK_SIZEOF(long long int)
 
+m4_include([m4/ax_cxx_compile_stdcxx_11.m4])
+AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
+: ${CXXFLAGS=""}
+: ${CFLAGS=""}
+
 dnl CPPFLAGS="$CPPFLAGS -DSIZEOF_LONG=$ac_cv_sizeof_long"
 dnl CPPFLAGS="$CPPFLAGS -DSIZEOF_LONG=$ac_cv_sizeof_long_long"
 
@@ -44,15 +51,8 @@ AC_TYPE_SIGNAL
 AC_CHECK_FUNCS(mkdir strdup)
 
 LDFLAGS="$LDFLAGS -ldl -lltdl"	
-CXXFLAGS="$CXXFLAGS -std=c++11 -Wall"
 
 AM_CONFIG_HEADER(src/clutils-config.h)
 
 AC_OUTPUT(Makefile \
-	documentation/Makefile \
-	src/Makefile \
-	test/Makefile \
-	test/modules/Makefile )
-
-echo "Ready to build"
-
+	src/Makefile)
