@@ -1,6 +1,6 @@
-lib_LTLIBRARIES = libclutils.la
+include $(top_srcdir)/Makefile.am.common
 
-AM_CPPFLAGS = -I$(top_srcdir)/src/pccts
+lib_LTLIBRARIES = libclutils.la
 
 EXTRA_DIST = \
 	ConfigurationParser.gg \
@@ -15,8 +15,7 @@ BUILT_SOURCES=\
 	ConfigurationParser.cpp \
 	ConfigurationParserHandle.h
 
-
-library_includedir=$(includedir)/clutils-@VERSION@
+library_includedir=$(includedir)/clutils
 library_include_HEADERS = \
 	pccts/AParser.h \
 	pccts/ATokPtr.h \
@@ -70,7 +69,7 @@ library_include_HEADERS = \
 	clutils/PluginManager.h \
 	clutils/AllocatorStack.h \
 	clutils/VectorIterator.h
-	
+
 libclutils_la_SOURCES = \
 	pccts/AParser.cpp \
 	pccts/ASTBase.cpp \
