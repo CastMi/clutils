@@ -31,11 +31,6 @@ public:
   ConfigurationScope( const string &scopeName );
 
   /**
-     Constructor 
-  */
-  ConfigurationScope( char *scopeName );
-
-  /**
      Returns this ConfigurationScope's name.
   */
   const string &getScopeName() const { return myScopeName; }

@@ -22,9 +22,6 @@
 ConfigurationScope::ConfigurationScope( const string &scopeName ) : 
   myScopeName( scopeName ){}
 
-ConfigurationScope::ConfigurationScope( char *scopeName ) : 
-  myScopeName( *new string( strdup(scopeName) ) ){}
-
 const ConfigurationScope *
 ConfigurationScope::findScope( const string &scopeName ) const {
   return myNestedScopes.find( scopeName );
