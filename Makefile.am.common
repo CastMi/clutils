@@ -1,1 +1,1 @@
-AM_CXXFLAGS = -g -export-dynamic -O0 -Wall -Wextra
+AM_CXXFLAGS = -Wall -pie -fpie -fPIE -shared -g -export-dynamic -Wextra
